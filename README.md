@@ -1,49 +1,158 @@
 # DaNotes Backend API
 
-This repository contains the backend API for the DaNotes application. It is built using Django and Django REST Framework (DRF) and provides endpoints to manage notes.
+This repository contains the backend API for the **DaNotes** application. It is built using **Django** and **Django REST Framework (DRF)** and provides REST endpoints to manage notes.
+
+---
 
 ## Tech Stack
 
 - **Framework:** Django
-- **API:** Django REST Framework
-- **Database:** SQLite (Development environment)
+- **API:** Django REST Framework (DRF)
+- **Database:** SQLite (Development)
+
+---
 
 ## Local Setup
 
-1. Clone the repository:
-   git clone https://github.com/CWhymann/danotes_backend.git
-   cd danotes_backend
+### 1. Clone the repository
 
-2. Create and activate a virtual environment:
-   python -m venv .venv
-   # Windows:
-   .venv\Scripts\activate
-   # macOS/Linux:
-   source .venv/bin/activate
+```powershell
+git clone https://github.com/CWhymann/danotes_backend.git
+Set-Location .\danotes_backend\
+```
 
-3. Install dependencies:
-   pip install -r requirements.txt
+### 2. Create a virtual environment
 
-4. Apply migrations:
-   python manage.py migrate
+```powershell
+python -m venv .venv
+```
 
-5. Start the server:
-   python manage.py runserver
+### 3. Activate the virtual environment
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+### 4. Install dependencies
+
+```powershell
+pip install -r requirements.txt
+```
+
+### 5. Apply database migrations
+
+```powershell
+python manage.py migrate
+```
+
+### 6. Start the development server
+
+```powershell
+python manage.py runserver
+```
+
+The API will be available at:
+
+```
+http://127.0.0.1:8000/api/
+```
+
+---
 
 ## API Reference
 
-The API is accessible at `http://127.0.0.1:8000/api/`.
-
 | Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| GET | `/api/notes/` | Retrieves a list of all notes. |
-| POST | `/api/notes/` | Creates a new note. |
-| GET | `/api/notes/{id}/` | Retrieves a specific note. |
-| PUT | `/api/notes/{id}/` | Updates a specific note. |
-| DELETE | `/api/notes/{id}/` | Deletes a specific note. |
+| :----- | :------- | :---------- |
+| GET | `/api/notes/` | Retrieve all notes |
+| POST | `/api/notes/` | Create a new note |
+| GET | `/api/notes/{id}/` | Retrieve a single note |
+| PUT | `/api/notes/{id}/` | Update a note |
+| DELETE | `/api/notes/{id}/` | Delete a note |
 
-### Data Model
-The `Note` model contains: `id`, `title`, `content`, `marked` (boolean), and `trash` (boolean).
+---
+
+## Data Model
+
+The `Note` model contains the following fields:
+
+| Field | Type | Description |
+| :---- | :--- | :---------- |
+| `id` | Integer | Primary key |
+| `title` | CharField | Note title |
+| `content` | TextField | Note content |
+| `marked` | Boolean | Marks the note as important |
+| `trash` | Boolean | Indicates whether the note is in the trash |
+
+---
 
 ## Integration
-CORS is configured to allow requests from the Angular frontend. The expected endpoint for the frontend is `/api/notes/`.
+
+CORS is configured to allow requests from the Angular frontend.
+
+Frontend endpoint:
+
+```
+/api/notes/
+```
+
+---
+
+## Useful PowerShell Commands
+
+### Create migrations
+
+```powershell
+python manage.py makemigrations
+```
+
+### Apply migrations
+
+```powershell
+python manage.py migrate
+```
+
+### Create a superuser
+
+```powershell
+python manage.py createsuperuser
+```
+
+### Open the Django shell
+
+```powershell
+python manage.py shell
+```
+
+### Run tests
+
+```powershell
+python manage.py test
+```
+
+---
+
+## Git Workflow
+
+### Check repository status
+
+```powershell
+git status
+```
+
+### Stage all changes
+
+```powershell
+git add .
+```
+
+### Commit changes
+
+```powershell
+git commit -m "Implement DaNotes backend API"
+```
+
+### Push to GitHub
+
+```powershell
+git push origin main
+```
